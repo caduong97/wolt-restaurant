@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,700,800&display=swap");
+$font-family: "Poppins", sans-serif;
+
+// colors
+$primary: #7fcd91;
+$primary-dark: #5b5656;
+$dark: #212326;
+$light: #f5eaea;
+$white: #ffffff;
+$text: #333333;
+$danger: #a31d1d;
+
+// spacing
+$spacing-base: 16px;
+$spacing-00-25: $spacing-base * 0.25; //4
+$spacing-00-50: $spacing-base * 0.5; //8
+$spacing-00-75: $spacing-base * 0.75; //12
+$spacing-01: $spacing-base * 1; //16
+$spacing-01-50: $spacing-base * 1.5; //24
+$spacing-02: $spacing-base * 2; //32
+$spacing-02-50: $spacing-base * 2.5; //36
+$spacing-03: $spacing-base * 3; //48
+$spacing-04: $spacing-base * 4; //64
+$spacing-05: $spacing-base * 5; //80
+$spacing-05-50: $spacing-base * 5.5; //88
+$spacing-06: $spacing-base * 6; //96
+$spacing-07-50: $spacing-base * 7.5; //120
+$spacing-09-50: $spacing-base * 9.5; //152
+$spacing-10: $spacing-base * 10; //160
+$spacing-12: $spacing-base * 12; //192
+$spacing-14: $spacing-base * 14; //224
+$spacing-16: $spacing-base * 16; //256
+$spacing-20: $spacing-base * 20; //320
+$spacing-24: $spacing-base * 24; //384
+$spacing-32: $spacing-base * 32; //512
