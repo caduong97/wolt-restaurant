@@ -1,0 +1,45 @@
+@import '../../assets/styles/utils';
+
+$default-max-width: 1280px;
+$max-columns: 10;
+
+@mixin columns-num {
+  @for $i from 1 through $max-columns {
+    &--#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+
+      @include for-tablet {
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax((992px - $spacing-04 * 2 - $spacing-01 * 2) / 3, 1fr)
+        );
+      }
+
+      @include for-tablet-small {
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax((768px - $spacing-04 * 2 - $spacing-01) / 2, auto)
+        );
+      }
+
+      @include for-mobile {
+        grid-template-columns: repeat(auto-fit, minmax(100%, auto));
+      }
+    }
+  }
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  justify-items: stretch;
+  gap: $spacing-02;
+
+  @include columns-num;
+
+  & > * {
+    object-fit: cover;
+    text-align: left;
+    margin: 0 auto;
+  }
+}

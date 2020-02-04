@@ -1,0 +1,205 @@
+// dynamically centered div
+@mixin center($max-width) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-01;
+}
+
+// media queries
+@mixin for-mobile-small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 414px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-small {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-small-screen {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin for-medium-screen {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin for-medium-large-screen {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin for-medium-large-screen-x {
+  @media (max-width: 1680px) {
+    @content;
+  }
+}
+
+@mixin for-large-screen {
+  @media (max-width: 1920px) {
+    @content;
+  }
+}
+
+// interpolate
+@mixin interpolate(
+  $properties,
+  $min-screen,
+  $max-screen,
+  $min-value,
+  $max-value
+) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation(
+          $min-screen,
+          $min-value,
+          $max-screen,
+          $max-value
+        );
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
+}
+
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen;
+  $sign: '+';
+
+  @if ($b < 0) {
+    $sign: '-';
+    $b: abs($b);
+  }
+
+  @return calc(#{$a * 100}vw #{$sign} #{$b});
+}
+
+// font mixins
+@mixin font-size-l-xxxx {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 1.802rem,
+    $max-value: 4.209rem
+  );
+}
+
+@mixin font-size-l-xxx {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 1.602rem,
+    $max-value: 3.157rem
+  );
+}
+
+@mixin font-size-l-xx {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 1.424rem,
+    $max-value: 2.369rem
+  );
+}
+
+@mixin font-size-l-x {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 1.266rem,
+    $max-value: 1.777rem
+  );
+}
+
+@mixin font-size-l {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 1.125rem,
+    $max-value: 1.333rem
+  );
+}
+
+@mixin font-size-m {
+  font-size: 1rem;
+}
+
+@mixin font-size-s {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 0.889rem,
+    $max-value: 0.75rem
+  );
+}
+
+@mixin font-size-s-x {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 0.79rem,
+    $max-value: 0.563rem
+  );
+}
+
+@mixin font-size-s-xx {
+  @include interpolate(
+    $properties: font-size,
+    $min-screen: 20rem,
+    $max-screen: 85.375rem,
+    $min-value: 0.702rem,
+    $max-value: 0.422rem
+  );
+}
+
+//limit text line
+@mixin multiline-truncate($line-number) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line-number;
+}

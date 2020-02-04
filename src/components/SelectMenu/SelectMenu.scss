@@ -1,0 +1,87 @@
+@import '../../assets/styles/utils';
+
+.select {
+  font-family: $font-family;
+  // @include font-size-m;
+  // font-weight: 300;
+  // line-height: 1;
+  text-align: left;
+  color: $text;
+  display: inline-block;
+  // width: 200px;
+  // height: 50px;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+
+  &__current {
+    cursor: pointer;
+    @include font-size-m;
+    font-weight: 300;
+    line-height: 1;
+    width: 200px;
+    height: 40px;
+    text-align: left;
+    position: relative;
+    background-color: $primary;
+    color: $white;
+    outline: none;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 19px;
+      left: 90%;
+      z-index: 2;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      border-top: 4px solid $white;
+    }
+
+    @include for-mobile {
+      width: 100px;
+    }
+  }
+
+  &__options {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 4px 12px 0 rgba(32, 33, 37, 0.2);
+    margin: 0 $spacing-01 0 0;
+
+    & > * {
+      cursor: pointer;
+      display: block;
+      @include font-size-m;
+      font-weight: 300;
+      line-height: 1;
+      width: 200px;
+      height: 40px;
+      text-align: left;
+      background: white;
+      border: 1px solid $border;
+
+      color: $text;
+      outline: none;
+
+      &:hover,
+      &:focus {
+        background: $border;
+      }
+
+      @include for-mobile {
+        width: 100px;
+      }
+
+      // @include for-mobile-small {
+      //   width: 100vw;
+      // }
+    }
+
+    &--open {
+      display: block;
+      overflow: hidden;
+    }
+  }
+}
