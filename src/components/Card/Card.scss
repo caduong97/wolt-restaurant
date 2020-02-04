@@ -2,6 +2,7 @@
 
 .card {
   max-width: 400px;
+  width: 100%;
   border: 1px solid $border;
   box-shadow: 0 4px 12px 0 rgba(32, 33, 37, 0.06);
   border-radius: 5px;
@@ -17,11 +18,13 @@
     border-radius: 5px 5px 0 0;
     width: 100%;
     height: 200px;
-    object-fit: cover;
     overflow: hidden;
 
     & > * {
       transition: 0.7s;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -48,6 +51,18 @@
     & > * {
       line-height: 2;
       color: $slight-dark;
+    }
+
+    &__location {
+      padding-right: $spacing-00-50;
+    }
+
+    &__tags {
+      @include multiline-truncate(1);
+
+      &:hover {
+        overflow: visible;
+      }
     }
   }
 }
