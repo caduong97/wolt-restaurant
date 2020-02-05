@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="app">
+      <h1 className="app__title">restaurant discovery</h1>
       <div className="app__filter">
         <SearchBar />
         <SelectMenu />

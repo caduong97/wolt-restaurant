@@ -6,6 +6,20 @@ const SelectMenu = () => {
   const [isOpen, setOpen] = useState(false)
   const [current, setCurrent] = useState('Sort')
 
+  window.addEventListener('click', e => {
+    // console.log(e.target.id)
+    if (e.target.id !== 'example') {
+      setOpen(false)
+    }
+  })
+
+  const closeSelect = () => {
+    setOpen(!isOpen)
+    if (!isOpen) {
+      setCurrent('Sort')
+    }
+  }
+
   const onSelect = value => {
     setCurrent(value)
     setOpen(false)
@@ -19,7 +33,8 @@ const SelectMenu = () => {
   return (
     <div className="select">
       <button
-        onClick={() => setOpen(!isOpen)}
+        id="example"
+        onClick={() => closeSelect()}
         className="select__current"
         type="button"
       >

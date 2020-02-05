@@ -1,6 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react'
 import PropTypes from 'prop-types'
 import './Card.scss'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 const Card = ({ image, name, description, city, tags }) => {
   return (
@@ -14,7 +18,9 @@ const Card = ({ image, name, description, city, tags }) => {
         <p>{description}</p>
       </div>
       <div className="card__sub-description">
-        <p className="card__sub-description__location">{city}</p>
+        <p className="card__sub-description__location">
+          <FontAwesomeIcon icon={faMapMarkerAlt} /> {city}
+        </p>
         <p className="card__sub-description__tags">{tags.join(',')}</p>
       </div>
     </div>

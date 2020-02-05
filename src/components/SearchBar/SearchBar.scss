@@ -3,24 +3,33 @@
 .search {
   @include font-size-m;
   margin-right: $spacing-01;
-  // flex-shrink: 1;
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    top: 15px;
+    left: $spacing-00-75;
+    color: $slight-dark;
+  }
+
   &__input {
-    // min-width: 100px;
+    font-family: $font-family;
     width: 300px;
     height: 40px;
     border-radius: 5px;
     border: 2px solid $border;
     outline-color: $primary;
-    padding: 0 $spacing-01;
+    padding: 0 $spacing-02;
+    font-family: $font-family;
 
     @include font-size-m;
 
     @include for-mobile {
-      width: 170px;
+      width: 150px;
     }
 
     @include for-mobile-small {
-      width: 130px;
+      width: 105px;
     }
   }
 }

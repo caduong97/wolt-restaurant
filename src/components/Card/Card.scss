@@ -54,15 +54,18 @@
     }
 
     &__location {
-      padding-right: $spacing-00-50;
+      display: inline-flex;
+      align-items: baseline;
+      // white-space: pre-wrap;
+
+      & > svg {
+        padding-right: $spacing-00-25;
+      }
     }
 
     &__tags {
+      padding-left: $spacing-00-50;
       @include multiline-truncate(1);
-
-      &:hover {
-        overflow: visible;
-      }
     }
   }
 }

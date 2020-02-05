@@ -3,22 +3,39 @@
 
 .app {
   font-family: $font-family;
-  padding-top: $spacing-07-50;
+  padding-top: $spacing-04;
   // box-sizing: border-box;
+
+  @include for-tablet {
+    padding-top: 0;
+  }
 
   & > * {
     @include center(1080px);
   }
 
+  &__title {
+    font-family: inherit;
+    text-transform: capitalize;
+    @include font-size-l-xxx;
+    text-align: center;
+    padding-bottom: $spacing-03;
+    color: $primary;
+    font-weight: 700;
+
+    @include for-tablet {
+      @include font-size-l-xx;
+      padding: $spacing-01 0;
+      margin-bottom: $spacing-02;
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
   &__filter {
-    // width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: $spacing-03;
-
-    @include for-mobile-small {
-      // display: block;
-    }
   }
 }
