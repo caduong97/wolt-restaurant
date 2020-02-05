@@ -1,24 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import './App.scss'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from './redux/actions/actions'
 
 import Grid from './components/Grid'
 import Card from './components/Card'
 import SelectMenu from './components/SelectMenu'
 import SearchBar from './components/SearchBar'
 
-function App() {
-  const [restaurants, setRestaurants] = useState([])
+const App = ({ restaurants, fetchRestaurants }) => {
+  // const [restaurants, setRestaurants] = useState([])
 
-  const fetchData = async () => {
-    const res = await fetch(
-      'https://raw.githubusercontent.com/caduong97/summer2020/master/restaurants.json',
-    )
-    const data = await res.json()
-    setRestaurants(data.restaurants)
-  }
+  // const fetchData = async () => {
+  //   const res = await fetch(
+  //     'https://raw.githubusercontent.com/caduong97/summer2020/master/restaurants.json',
+  //   )
+  //   const data = await res.json()
+  //   setRestaurants(data.restaurants)
+  // }
 
   useEffect(() => {
-    fetchData()
+    fetchRestaurants()
+    console.log('heheh')
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -47,4 +53,22 @@ function App() {
   )
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    restaurants: state.restaurants,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(actions, dispatch)
+}
+
+App.propTypes = {
+  restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
+  fetchRestaurants: PropTypes.func.isRequired,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App)
