@@ -10,7 +10,10 @@ const Grid = ({ colNum, children }) => {
 
 Grid.propTypes = {
   colNum: PropTypes.number.isRequired,
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 }
 
 export default Grid

@@ -21,7 +21,12 @@ const Card = ({ image, name, description, city, tags }) => {
         <p className="card__sub-description__location">
           <FontAwesomeIcon icon={faMapMarkerAlt} /> {city}
         </p>
-        <p className="card__sub-description__tags">{tags.join(',')}</p>
+        <p
+          data-testid="restaurant-tags"
+          className="card__sub-description__tags"
+        >
+          {tags.join(', ')}
+        </p>
       </div>
     </div>
   )

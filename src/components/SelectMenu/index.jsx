@@ -7,9 +7,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from '../../redux/actions/actionCreators'
 
-const SelectMenu = ({ sortAsc, sortDesc }) => {
+export const SelectMenu = ({ sortAsc, sortDesc }) => {
   const [isOpen, setOpen] = useState(false)
-  const [current, setCurrent] = useState('Sort')
+  const [current, setCurrent] = useState('Sort name alphabetically')
 
   window.addEventListener('click', e => {
     e.preventDefault()
@@ -21,23 +21,21 @@ const SelectMenu = ({ sortAsc, sortDesc }) => {
   const onSelect = () => {
     setOpen(!isOpen)
     if (!isOpen) {
-      setCurrent('Sort')
+      setCurrent('Sort name alphabetically')
     }
   }
 
   const sortAscending = () => {
     sortAsc()
-    setCurrent('A to Z')
+    setCurrent('From A to Z')
     setOpen(false)
   }
 
   const sortDescending = () => {
     sortDesc()
-    setCurrent('Z to A')
+    setCurrent('From Z to A')
     setOpen(false)
   }
-
-  console.log('select render')
 
   const optionsClass = className({
     [`select__options`]: true,
@@ -56,18 +54,20 @@ const SelectMenu = ({ sortAsc, sortDesc }) => {
       </button>
       <div className={optionsClass}>
         <button
+          data-testid="sort-ascending"
           className="select__options__item"
           type="button"
           onClick={() => sortAscending()}
         >
-          A to Z
+          From A to Z
         </button>
         <button
+          data-testid="sort-descending"
           className="select__options__item"
           type="button"
           onClick={() => sortDescending()}
         >
-          Z to A
+          From Z to A
         </button>
       </div>
     </div>
@@ -85,7 +85,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 SelectMenu.propTypes = {
-  // restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
   sortAsc: PropTypes.func.isRequired,
   sortDesc: PropTypes.func.isRequired,
 }

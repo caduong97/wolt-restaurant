@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid/> renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="grid grid--1"
+  >
+    <p>
+      Lorem Ipsum
+    </p>
+  </div>
+</div>
+`;

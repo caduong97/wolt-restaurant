@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectMenu /> renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="select"
+  >
+    <button
+      class="select__current"
+      id="sort-button"
+      type="button"
+    >
+      Sort name alphabetically
+    </button>
+    <div
+      class="select__options"
+    >
+      <button
+        class="select__options__item"
+        data-testid="sort-ascending"
+        type="button"
+      >
+        From A to Z
+      </button>
+      <button
+        class="select__options__item"
+        data-testid="sort-descending"
+        type="button"
+      >
+        From Z to A
+      </button>
+    </div>
+  </div>
+</div>
+`;
