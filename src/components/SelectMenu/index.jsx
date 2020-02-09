@@ -5,7 +5,7 @@ import './SelectMenu.scss'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from '../../redux/actions/actions'
+import * as actions from '../../redux/actions/actionCreators'
 
 const SelectMenu = ({ sortAsc, sortDesc }) => {
   const [isOpen, setOpen] = useState(false)

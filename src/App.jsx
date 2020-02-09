@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './App.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from './redux/actions/actions'
+import * as actions from './redux/actions/actionCreators'
 
 import Grid from './components/Grid'
 import Card from './components/Card'
