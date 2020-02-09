@@ -11,19 +11,8 @@ import SelectMenu from './components/SelectMenu'
 import SearchBar from './components/SearchBar'
 
 const App = ({ restaurants, fetchRestaurants }) => {
-  // const [restaurants, setRestaurants] = useState([])
-
-  // const fetchData = async () => {
-  //   const res = await fetch(
-  //     'https://raw.githubusercontent.com/caduong97/summer2020/master/restaurants.json',
-  //   )
-  //   const data = await res.json()
-  //   setRestaurants(data.restaurants)
-  // }
-
   useEffect(() => {
     fetchRestaurants()
-    console.log('heheh')
     // eslint-disable-next-line
   }, [])
 

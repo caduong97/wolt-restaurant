@@ -1,41 +1,43 @@
 import React, { useState } from 'react'
 import className from 'classnames'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import './SelectMenu.scss'
-// import { bindActionCreators } from 'redux'
-// import { connect } from 'react-redux'
-// import * as actions from '../../redux/actions/actions'
 
-const SelectMenu = () => {
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from '../../redux/actions/actions'
+
+const SelectMenu = ({ sortAsc, sortDesc }) => {
   const [isOpen, setOpen] = useState(false)
   const [current, setCurrent] = useState('Sort')
 
-  // window.addEventListener('click', e => {
-  //   // console.log(e.target.id)
-  //   e.preventDefault()
-  //   console.log('random click')
-  //   // if (e.target.id !== 'example') {
-  //   //   setOpen(false)
-  //   // }
-  // })
-  // console.log(current)
+  window.addEventListener('click', e => {
+    e.preventDefault()
+    if (e.target.id !== 'sort-button') {
+      setOpen(false)
+    }
+  })
 
-  const closeSelect = () => {
+  const onSelect = () => {
     setOpen(!isOpen)
     if (!isOpen) {
       setCurrent('Sort')
     }
   }
 
-  const onSelect = value => {
-    setCurrent(value)
+  const sortAscending = () => {
+    sortAsc()
+    setCurrent('A to Z')
     setOpen(false)
   }
 
-  // const sortAscending = value => {
-  //   sortAsc()
-  //   setCurrent(value)
-  // }
+  const sortDescending = () => {
+    sortDesc()
+    setCurrent('Z to A')
+    setOpen(false)
+  }
+
+  console.log('select render')
 
   const optionsClass = className({
     [`select__options`]: true,
@@ -45,8 +47,8 @@ const SelectMenu = () => {
   return (
     <div className="select">
       <button
-        id="example"
-        onClick={() => closeSelect()}
+        id="sort-button"
+        onClick={() => onSelect()}
         className="select__current"
         type="button"
       >
@@ -56,14 +58,14 @@ const SelectMenu = () => {
         <button
           className="select__options__item"
           type="button"
-          onClick={() => onSelect('A to Z')}
+          onClick={() => sortAscending()}
         >
           A to Z
         </button>
         <button
           className="select__options__item"
           type="button"
-          onClick={() => onSelect('Z to A')}
+          onClick={() => sortDescending()}
         >
           Z to A
         </button>
@@ -72,19 +74,23 @@ const SelectMenu = () => {
   )
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     restaurants: state.restaurants,
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    restaurants: state.restaurants,
+  }
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators(actions, dispatch)
-// }
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(actions, dispatch)
+}
 
-// SelectMenu.propTypes = {
-//   restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   sortAsc: PropTypes.func.isRequired,
-// }
+SelectMenu.propTypes = {
+  // restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sortAsc: PropTypes.func.isRequired,
+  sortDesc: PropTypes.func.isRequired,
+}
 
-export default SelectMenu
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SelectMenu)
